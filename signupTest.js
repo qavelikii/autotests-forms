@@ -17,19 +17,19 @@ const puppeteer = require('puppeteer');
   });
 
   // Navigating to the signup page
-  await page.goto('https://boostclick.ru/signup/', { waitUntil: 'domcontentloaded' });
+  await page.goto('https://pageaddress/', { waitUntil: 'domcontentloaded' });
 
   // Waiting for the page to load and entering registration data
   try {
     // Trying to use a more general selector
     await page.waitForSelector('input[type="email"]', { timeout: 60000 });
-    await page.type('input[type="email"]', 'qavelikii@gmail.com');
+    await page.type('input[type="email"]', 'test@yourdomain.com');
 
     await page.waitForSelector('input[type="password"]', { timeout: 60000 });
     const passwordFields = await page.$$('input[type="password"]');
     if (passwordFields.length >= 2) {
-      await passwordFields[0].type('testqavelikii123');
-      await passwordFields[1].type('testqavelikii123');
+      await passwordFields[0].type('yourpassword');
+      await passwordFields[1].type('yourpassword');
     } else {
       throw new Error('Failed to find both password fields');
     }
